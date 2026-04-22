@@ -3,8 +3,10 @@ Bài tập IoT Chapter 4 — QEMU + Wokwi + Sense HAT
 # IoT Lab – Chapter 4: Raspberry Pi with Python
 
 **Họ tên:** Lý Việt Linh
+
 **MSSV:** N23DCCI039
-**Lớp:** (Điền tên lớp của Linh vào đây, ví dụ: D23CQCN01-N)
+
+**Lớp:** D23CQCI01-N
 
 ## Danh sách bài tập
 
