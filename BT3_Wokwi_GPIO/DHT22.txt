@@ -1,0 +1,57 @@
+from machine import Pin
+import dht
+import time
+
+sensor = dht.DHT22(Pin(16))
+
+red = Pin(15, Pin.OUT)
+yellow = Pin(14, Pin.OUT)
+green = Pin(13, Pin.OUT)
+
+def all_off():
+    red.value(0)
+    yellow.value(0)
+    green.value(0)
+
+while True:
+    try:
+
+        all_off()
+        red.value(1)
+        print('ĐỎ - Dừng')
+
+        sensor.measure()
+        temp = sensor.temperature()
+        hum = sensor.humidity()
+        t = time.localtime()
+        ts = f'{t[3]:02d}:{t[4]:02d}:{t[5]:02d}'
+        print(f'[{ts}] Temp: {temp:.1f}°C | Humidity: {hum:.1f}%')
+        time.sleep(5)
+
+        all_off()
+        green.value(1)
+        print('XANH - Đi')
+        
+        sensor.measure()
+        temp = sensor.temperature()
+        hum = sensor.humidity()
+        t = time.localtime()
+        ts = f'{t[3]:02d}:{t[4]:02d}:{t[5]:02d}'
+        print(f'[{ts}] Temp: {temp:.1f}°C | Humidity: {hum:.1f}%')
+        time.sleep(5)
+
+        all_off()
+        yellow.value(1)
+        print('VÀNG - Chuẩn bị dừng')
+        
+        sensor.measure()
+        temp = sensor.temperature()
+        hum = sensor.humidity()
+        t = time.localtime()
+        ts = f'{t[3]:02d}:{t[4]:02d}:{t[5]:02d}'
+        print(f'[{ts}] Temp: {temp:.1f}°C | Humidity: {hum:.1f}%')
+        time.sleep(2)
+
+    except Exception as e:
+        print(f'Lỗi: {e}')
+        time.sleep(2)
